@@ -1,17 +1,19 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.XR.ARFoundation;
 
 [RequireComponent(typeof(Rigidbody))]
 public class PowerManager : MonoBehaviour
 {
     Rigidbody rbGolfy;
-    [SerializeField] Transform cameraT;
+    [SerializeField] GameObject cameraT;
     //[SerializeField] Vector3 parabola;
     [SerializeField] float parabolaForce;
     private void Start()
     {
         rbGolfy= GetComponent<Rigidbody>();
+        cameraT = GameObject.FindGameObjectWithTag("MainCamera");
         //Flying();
     }
     public void Flying()
