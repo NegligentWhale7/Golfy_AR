@@ -12,29 +12,30 @@ public class PowerManager : MonoBehaviour
     //[SerializeField] Vector3 parabola;
     [SerializeField] float powerValue, waitingTime;
     [SerializeField] Slider powerSlider;
-    Vector3 initialPosition;
+    [SerializeField] Transform spawnPos;
     private void Start()
     {
         rbGolfy = GetComponent<Rigidbody>();
-        cameraT = GameObject.FindGameObjectWithTag("MainCamera");
-        initialPosition = transform.position;
+        //cameraT = GameObject.FindGameObjectWithTag("MainCamera");
         //Flying();
     }
     public void Flying()
     {
         GetForce();
         //parabola = new Vector3(cameraT.transform.position.x,cameraT.transform.position.y * parabolaForce, cameraT.transform.position.z * parabolaForce); 
-        rbGolfy.AddForce(cameraT.transform.forward * powerValue, ForceMode.Impulse);
+        Vector3 direction = cameraT.transform.forward;
+        rbGolfy.AddForce((cameraT.transform.forward * powerValue), ForceMode.Impulse);
     }
     public void GetForce()
     {
         powerValue = powerSlider.value;
-        Debug.Log(powerValue);
+        //Debug.Log(powerValue);
         StartCoroutine(RestartPosition(waitingTime));
     }
     private IEnumerator RestartPosition(float time)
     {
         yield return new WaitForSeconds(time);
-        transform.position = initialPosition;
+        transform.position = spawnPos.position;
+        StopAllCoroutines();
     }
 }
