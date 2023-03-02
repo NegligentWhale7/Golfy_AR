@@ -13,13 +13,19 @@ public class PlayerController : MonoBehaviour
         swipeListener = FindObjectOfType<SwipeListener>();
         powerManager = GetComponent<PowerManager>();
     }
-    private void OnSwipe(string swipe)
+    private void Update()
     {
-        if(swipe == "Up")
+        if (!powerManager.isFlying) powerManager.LookingAtCamera();
+        powerManager.CheckConstrains();
+    }
+    private void OnSwipe(string swipe)
+    {        
+            if (swipe == "Up")
         {
-            powerManager.Flying();
+            if (!powerManager.isFlying) powerManager.Flying();
         }
     }
+    
     private void OnDisable()
     {
         swipeListener.OnSwipe.RemoveListener(OnSwipe);
