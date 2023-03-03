@@ -71,7 +71,10 @@ public class PowerManager : MonoBehaviour
     private IEnumerator RestartPosition(float time)
     {
         yield return new WaitForSeconds(time);
-        transform.position = spawnPos.position;
+        //transform.position = spawnPos.position;
+        Vector3 newPos = spawnPos.position;
+        Mathf.Clamp(newPos.y, 15f, 30f);
+        transform.position = newPos;
         isFlying = false;
         StopAllCoroutines();
     }
