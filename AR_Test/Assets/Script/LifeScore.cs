@@ -2,11 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class LifeScore : MonoBehaviour
 {
     public int score = 0;
-    public Text text;
+    public TMP_Text text;
     
     void Start()
     {
