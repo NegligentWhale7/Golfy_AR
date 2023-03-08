@@ -73,7 +73,7 @@ public class PowerManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         //transform.position = spawnPos.position;
         Vector3 newPos = spawnPos.position;
-        Mathf.Clamp(newPos.y, 17f, 30f);
+        Mathf.Clamp(newPos.y, 20f, 30f);
         transform.position = newPos;
         isFlying = false;
         StopAllCoroutines();

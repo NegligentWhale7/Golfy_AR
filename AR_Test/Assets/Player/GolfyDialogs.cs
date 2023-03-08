@@ -6,7 +6,7 @@ using TMPro;
 public class GolfyDialogs : MonoBehaviour
 {
     [SerializeField] PowerManager powerManager;
-    [SerializeField] List<TextMeshProUGUI> golfysDialogs = new List<TextMeshProUGUI>();
+    [SerializeField] List<GameObject> golfysDialogs = new List<GameObject>();
     [SerializeField] float time;
     bool isTalking = false;
     int random;
