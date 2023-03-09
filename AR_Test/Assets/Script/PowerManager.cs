@@ -13,6 +13,7 @@ public class PowerManager : MonoBehaviour
     [SerializeField] float powerValue, waitingTime;
     [SerializeField] Slider powerSlider;
     [SerializeField] Transform spawnPos;
+    [SerializeField] GameObject Grito;
     Rigidbody rbGolfy;
     public bool isFlying = false;
 
@@ -40,6 +41,7 @@ public class PowerManager : MonoBehaviour
         //rbGolfy.AddForce((rbGolfy.transform.InverseTransformPoint(direction)), ForceMode.Impulse);
         //rbGolfy.AddForce(direction.normalized * powerValue, ForceMode.Impulse);
         isFlying = true;
+        Grito.SetActive(true);
     }
     public void GetForce()
     {
@@ -73,9 +75,10 @@ public class PowerManager : MonoBehaviour
         yield return new WaitForSeconds(time);
         //transform.position = spawnPos.position;
         Vector3 newPos = spawnPos.position;
-        Mathf.Clamp(newPos.y, 20f, 30f);
+        Mathf.Clamp(newPos.y, 30f, 50f);
         transform.position = newPos;
         isFlying = false;
         StopAllCoroutines();
+        Grito.SetActive(false);
     }
 }

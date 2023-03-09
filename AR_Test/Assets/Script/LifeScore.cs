@@ -8,6 +8,7 @@ public class LifeScore : MonoBehaviour
 {
     public int score = 0;
     public TMP_Text text;
+    public AudioSource golpe;
     
     void Start()
     {
@@ -23,17 +24,21 @@ public class LifeScore : MonoBehaviour
 
     private void OnTriggerEnter(Collider other)
     {
+
+
         switch (other.tag)
         {
 
             case "Normal":
 
                 score = score + 50;
+                golpe.Play();
                 break;
 
             case "Critic":
 
                 score = score + 100;
+                golpe.Play();
                 break;
 
             case "InstaKill":
@@ -41,6 +46,10 @@ public class LifeScore : MonoBehaviour
                 break;
 
         }
+    }
+    private void OnTriggerExit(Collider other)
+    {
+        
     }
 
     private void OnTriggerStay(Collider other)
